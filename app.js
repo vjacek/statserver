@@ -146,8 +146,8 @@ function logDownloadToMySQL(db, request) {
         var file = parseFile(request);
         var agent = request.headers['user-agent'];
 
-        var values = [ip, file, agent];
-        var sql = 'insert into downloads (time, ip, file, agent) values (now(), ?, ?, ?);';
+        var values = [ip, request.hostname, file, agent];
+        var sql = 'insert into downloads (time, ip, hostname, file, agent) values (now(), ?, ?, ?, ?);';
         db.query(sql, values, (error, rows, fields) => {
             if(!error) {
                 resolve();

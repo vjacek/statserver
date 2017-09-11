@@ -4,6 +4,7 @@ drop table if exists downloads;
 create table downloads (
     time timestamp,
     ip varchar(100),
+    hostname varchar(1000),
     file varchar(1000),
     agent varchar(1000),
     index index_file_time (file, time)
