@@ -58,7 +58,7 @@ else {
         if(request.path !== '/') {
 
             file = path.join(__dirname, '/public/', request.hostname, request.path);
-            console.log((new Date())+' File requested '+file);
+            console.log((new Date())+' File requested '+request.hostname+' '+request.path);
 
             checkFileExists(request).then((exists) => {
                 if(exists === true) {
@@ -79,7 +79,7 @@ else {
                         // Log request to MySQL
                         if(config.logToMySQL === true) {
                             logDownloadToMySQL(DB, request).then(() => {
-                                console.log((new Date())+' Download logged file '+file);
+                                console.log((new Date())+' Logged file download'+file);
                             }).catch((error) => {
                                 console.log(error);
                             });
