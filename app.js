@@ -52,7 +52,7 @@ else {
     app.get('*', function(request, response) {
 
         // Serve default file
-        var file = path.join(__dirname, '/public/', 'index.html');
+        var file = path.join(__dirname, '/public/', request.hostname, 'index.html');
 
         // Serve all other files exactly as requested
         if(request.path !== '/') {
@@ -96,6 +96,11 @@ else {
             });
 
         }
+
+	// Serve index.html
+	else {
+	    response.sendFile(file);
+	}
 
     }); // app.get('*', ...)
 }
