@@ -79,7 +79,7 @@ else {
                         // Log request to MySQL
                         if(config.logToMySQL === true) {
                             logDownloadToMySQL(DB, request).then(() => {
-                                console.log((new Date())+' Logged file download'+file);
+                                console.log((new Date())+' Logged file download '+file);
                             }).catch((error) => {
                                 console.log(error);
                             });
